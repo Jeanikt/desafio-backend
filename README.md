@@ -86,7 +86,7 @@ O projeto cumpre os principais requisitos do desafio:
 1.  **Clone o repositório:**
 
     ```bash
-    git clone <link-do-seu-repositorio>
+    git clone https://github.com/Jeanikt/desafio-backend
     cd picpay-simplificado
 
     ```
