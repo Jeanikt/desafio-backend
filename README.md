@@ -1,10 +1,10 @@
-# PicPay Simplificado - Desafio Back-end
+# Payment API - Desafio Back-end
 
-Bem-vindo ao **PicPay Simplificado**, uma solução desenvolvida como parte de um desafio técnico de back-end. Este projeto implementa uma API RESTful para simular uma plataforma de pagamentos simplificada, permitindo transferências de dinheiro entre usuários comuns e lojistas. A implementação foi feita utilizando **Node.js** com **TypeScript**, seguindo boas práticas de desenvolvimento como arquitetura limpa, princípios SOLID e modularidade.
+Bem-vindo à **Payment API**, uma solução desenvolvida como parte de um desafio técnico de back-end. Este projeto implementa uma API RESTful para simular uma plataforma de pagamentos simplificada, permitindo transferências de dinheiro entre usuários comuns e lojistas. A implementação foi feita utilizando **Node.js** com **TypeScript**, seguindo boas práticas de desenvolvimento como arquitetura limpa, princípios SOLID e modularidade.
 
 ## Sobre o Projeto
 
-O objetivo do PicPay Simplificado é oferecer uma plataforma onde:
+O objetivo desta API é oferecer uma plataforma onde:
 
 - Usuários comuns podem enviar dinheiro para outros usuários ou lojistas.
 - Lojistas podem apenas receber transferências.
@@ -31,7 +31,7 @@ Este projeto foi estruturado para ser simples, manutenível e escalável, com fo
 
 O projeto segue uma arquitetura em camadas para promover desacoplamento e facilitar a manutenção. A estrutura de pastas é organizada da seguinte forma:
 
-picpay-simplificado/
+desafio-backend/
 ├── src/
 │ ├── controllers/ # Lógica de entrada/saída da API
 │ ├── models/ # Definições de entidades
@@ -151,56 +151,69 @@ Content-Type: application/json
 }
 ```
 
-Respostas Possíveis
+### Respostas Possíveis
 
+```bash
 Sucesso (200)
 { "message": "Transferência realizada com sucesso" }
 
 Erro (400):
 { "error": "Saldo insuficiente" }
+```
 
-Testes Automatizados
+### Testes Automatizados
 
 O projeto inclui testes unitários e de integração para garantir a qualidade do código.
+
 Testes Unitários: Cobrem a lógica de negócio no TransferService, testando cenários como transferência bem-sucedida, saldo insuficiente e restrições de lojistas.
 
 Testes de Integração: Validam o endpoint /transfer, verificando respostas para requisições válidas e inválidas.
 
 Nota: As chamadas a serviços externos (autorização e notificação) são mockadas nos testes para evitar dependências externas e garantir consistência.
 
-Executando os Testes
-Certifique-se de que as dependências estão instaladas:
+- **Executando os Testes**
 
+1. **Certifique-se de que as dependências estão instaladas:**
+
+```bash
 npm install
+```
 
-Rode os testes:
+2. **Rode os testes:**
+
+```bash
 npm run test
+```
 
-Para rodar em modo interativo (watch):
-npm run test:watch
+3. **Para rodar em modo interativo (watch):**
 
-Escolhas Técnicas e Justificativas
-Node.js com TypeScript:
-Escolhi Node.js pela sua leveza e ampla adoção em APIs RESTful.
+```bash
+   npm run test:watch
+```
+
+## Escolhas Técnicas e Justificativas
+
+1. **Node.js com TypeScript:**
+   Escolhi Node.js pela sua leveza e ampla adoção em APIs RESTful.
 
 TypeScript foi utilizado para garantir tipagem estática, reduzindo erros em tempo de execução e facilitando a manutenção.
 
-Arquitetura em Camadas:
-Separei as responsabilidades em controllers (entrada/saída), services (lógica de negócio) e repositories (acesso a dados) para seguir o princípio de responsabilidade única (SRP) do SOLID.
+2. **Arquitetura em Camadas:**
+   Separei as responsabilidades em controllers (entrada/saída), services (lógica de negócio) e repositories (acesso a dados) para seguir o princípio de responsabilidade única (SRP) do SOLID.
 
 Facilita a substituição do banco em memória por um banco real (ex.: PostgreSQL) no futuro.
 
-Simulação de Banco em Memória:
-Como o cadastro de usuários não é avaliado, optei por uma simulação simples para focar no fluxo de transferência.
+3. **Simulação de Banco em Memória:**
+   Como o cadastro de usuários não é avaliado, optei por uma simulação simples para focar no fluxo de transferência.
 
-Transações:
-Implementei uma lógica de rollback manual para simular atomicidade, já que o banco em memória não suporta transações nativas.
+4. **Transações:**
+   Implementei uma lógica de rollback manual para simular atomicidade, já que o banco em memória não suporta transações nativas.
 
-Notificações Assíncronas:
-O envio de notificações não bloqueia a transação, refletindo uma boa prática de resiliência em sistemas distribuídos.
+5. **Notificações Assíncronas:**
+   O envio de notificações não bloqueia a transação, refletindo uma boa prática de resiliência em sistemas distribuídos.
 
-Testes:
-Usei Jest para testes unitários e de integração, garantindo cobertura de cenários principais e aumentando a confiabilidade do código.
+6. **Testes:**
+   Usei Jest para testes unitários e de integração, garantindo cobertura de cenários principais e aumentando a confiabilidade do código.
 
-Docker:
-Containerizei a aplicação para facilitar a execução em diferentes ambientes, atendendo a um dos diferenciais do desafio.
+7. **Docker:**
+   Containerizei a aplicação para facilitar a execução em diferentes ambientes, atendendo a um dos diferenciais do desafio.
